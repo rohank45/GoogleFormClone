@@ -1,0 +1,184 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+/* .fade-in { animation: fadeIn 2s; } */
+
+/* body {
+  line-height: 0.5 !important;
+} */
+
+.stickyNavbar {
+  position: sticky;
+  /* top: 10%; */
+}
+
+.preventPageCopyPaste {
+  user-select: none;
+}
+
+.assignment-card-image-width {
+  width: 200px;
+}
+
+.course-card-image-width {
+  width: 150px;
+}
+
+@media screen and (max-width: 500px) {
+  .assignment-card-image-width {
+    width: 300px;
+  }
+
+  .course-card-image-width {
+    width: 300px;
+  }
+}
+
+/* @media screen and (min-width:100px) and (max-width:1200px) {
+  .sidebar-main {
+    width: 20%;
+  }
+} */
+
+@media screen and (max-width: 750px) {
+  .create-class-modal {
+    width: 90%;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .position-class {
+    position: absolute;
+    left: 20%;
+    /* top: 10%; */
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .position-class {
+    position: absolute;
+    /* top: 10%; */
+  }
+}
+
+li {
+  list-style: disc outside none;
+  display: list-item;
+  margin-left: 1.5em;
+}
+
+.output {
+  background-color: beige;
+}
+
+.controls {
+  display: flex;
+  flex-direction: row-reverse;
+  padding: 8px;
+  background-color: aquamarine;
+}
+
+.pane {
+  height: 90vh;
+  /* display: flex; */
+}
+
+.editor-container {
+  flex-grow: 1;
+  flex-basis: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  background-color: hsl(225, 6%, 25%);
+}
+
+.editor-container.collapsed {
+  flex-grow: 0;
+}
+
+.editor-container.collapsed .CodeMirror-scroll {
+  position: absolute;
+  overflow: hidden !important;
+}
+
+.expand-collapse-btn {
+  margin-left: 0.5rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.editor-title {
+  display: flex;
+  justify-content: space-between;
+  background-color: hsl(225, 6%, 13%);
+  color: white;
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
+  border-top-right-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
+}
+
+.CodeMirror {
+  height: 100% !important;
+}
+
+.code-mirror-wrapper {
+  flex-grow: 1;
+  border-bottom-right-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.top-pane {
+  background-color: hsl(225, 6%, 25%);
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 3px solid #006b5c;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+.loader::after {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 3px solid;
+  border-color: black transparent;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.teachers-remarks {
+  background-color: rgba(0, 255, 0, 0.3);
+  padding: 8px;
+  border-radius: 8px;
+}
