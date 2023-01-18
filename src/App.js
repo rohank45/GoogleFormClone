@@ -24,7 +24,7 @@ import axios from "axios";
 // import { EXPRESS_API_BASE_URL } from "../../constant";
 // import Editor from "ckeditor5-custom-build/build/ckeditor";
 // import { CKEditor } from "@ckeditor/ckeditor5-react";
-import { usePrompt } from "./UsePrompt";
+// import { usePrompt } from "./UsePrompt";
 import FilledButton from "./FilledButton";
 import UnFilledButton from "./UnFilledButton";
 import Loader from "./Loader";
@@ -89,23 +89,23 @@ const App = () => {
   let base64Length = 10000;
   let EXPRESS_API_BASE_URL = "";
 
-  // handle unsaved prompt
-  useEffect(() => {
-    if (submittedStatus === "SUBMITTED") {
-      setNavBlocker(false);
-    } else {
-      if (
-        assignmentTitle.length !== 0 ||
-        assignmentDesc.length !== 0 ||
-        queArr.length !== 0
-      ) {
-        setNavBlocker(true);
-      } else {
-        setNavBlocker(false);
-      }
-    }
-  }, [submittedStatus, assignmentTitle, assignmentDesc, queArr]);
-  usePrompt("Unsaved changes, are you sure you want to exit?", navBlocker);
+  // // handle unsaved prompt
+  // useEffect(() => {
+  //   if (submittedStatus === "SUBMITTED") {
+  //     setNavBlocker(false);
+  //   } else {
+  //     if (
+  //       assignmentTitle.length !== 0 ||
+  //       assignmentDesc.length !== 0 ||
+  //       queArr.length !== 0
+  //     ) {
+  //       setNavBlocker(true);
+  //     } else {
+  //       setNavBlocker(false);
+  //     }
+  //   }
+  // }, [submittedStatus, assignmentTitle, assignmentDesc, queArr]);
+  // usePrompt("Unsaved changes, are you sure you want to exit?", navBlocker);
 
   // for dropdown
   const answerTypesArr = [
@@ -534,16 +534,18 @@ const App = () => {
       finalAssignmentCode.toLowerCase() + "_" + randomThreeDigitNo;
 
     if (!checkTitleLength) {
-      toast.warn("Assignment title should contain minimum 5 characters!", {
+      toast.warn("Title should contain minimum 5 characters!", {
         position: toast.POSITION.TOP_CENTER,
         autoClose: 3000,
       });
-    } else if (!assignmentDesc) {
-      toast.warn("Assignment description required!", {
-        position: toast.POSITION.TOP_CENTER,
-        autoClose: 3000,
-      });
-    } else if (queNewArr.length === 0) {
+    }
+    // else if (!assignmentDesc) {
+    //   toast.warn("Assignment description required!", {
+    //     position: toast.POSITION.TOP_CENTER,
+    //     autoClose: 3000,
+    //   });
+    // }
+    else if (queNewArr.length === 0) {
       toast.warn("Add atleast one question!", {
         position: toast.POSITION.TOP_CENTER,
         autoClose: 3000,
@@ -766,7 +768,7 @@ const App = () => {
         <div className="w-4/5 mobile:w-full ipad:w-full position-class pb-10">
           <div className="bg-secondary flex justify-between items-center p-5 stickyNavbar z-40 mobile:flex-col">
             <p className="text-2xl font-semibold">
-              {isAssignmentDetails ? "Edit Assignment" : "Add Assignment"}
+              {isAssignmentDetails ? "Edit Assignment" : "Google Form Clone"}
             </p>
 
             {submittedStatus === "SUBMITTED" ? (
@@ -800,7 +802,7 @@ const App = () => {
                   <TextField
                     style={{ width: "100%" }}
                     id="outlined-multiline-flexible"
-                    label="Assignment Title *"
+                    label="Title *"
                     disabled={submittedStatus === "SUBMITTED" ? true : false}
                     value={assignmentTitle}
                     onChange={(e) => setAssignmentTitle(e.target.value)}
@@ -808,9 +810,9 @@ const App = () => {
                 </div>
 
                 <div className="my-3" id="create-question">
-                  <p className="text-primary text-lg font-semibold m-2 mobile:text-xs">
+                  {/* <p className="text-primary text-lg font-semibold m-2 mobile:text-xs">
                     Assignment Description *
-                  </p>
+                  </p> */}
 
                   {/* <CKEditor
                     editor={ClassicEditor}
@@ -843,7 +845,7 @@ const App = () => {
 
                 <div className="my-3 flex items-center flex-wrap gap-2 border border-gray-300 px-2 py-3 rounded-md">
                   <p className="font-semibold text-lg mobile:text-xs text-primary">
-                    Upload assignment graphic :{" "}
+                    Upload logo:
                   </p>
 
                   <div>
@@ -856,7 +858,7 @@ const App = () => {
                     />
                     <FilledButton
                       onClickFilled={() => fileInputRef.current.click()}
-                      filledBtnText="Upload Image"
+                      filledBtnText="select"
                       loading={loading}
                       disabled={submittedStatus === "SUBMITTED" ? true : false}
                     />
@@ -887,9 +889,9 @@ const App = () => {
               ) : (
                 <div className="border border-primary rounded-md p-2 mt-6 relative">
                   <div className="mb-3 w-full">
-                    <p className="text-primary text-xl font-semibold m-2 mobile:text-xs">
+                    {/* <p className="text-primary text-xl font-semibold m-2 mobile:text-xs">
                       Question *
-                    </p>
+                    </p> */}
 
                     {/* <CKEditor
                       editor={Editor}
@@ -906,6 +908,17 @@ const App = () => {
                         // toolbar: ["insertImage"],
                       }}
                     /> */}
+                  </div>
+
+                  <div className="mb-3 w-full">
+                    <TextField
+                      style={{ width: "100%" }}
+                      id="outlined-multiline-flexible"
+                      label="Question *"
+                      type="text"
+                      value={que}
+                      onChange={(e) => setQue(e.target.value)}
+                    />
                   </div>
 
                   <div className="mb-1 w-full">
